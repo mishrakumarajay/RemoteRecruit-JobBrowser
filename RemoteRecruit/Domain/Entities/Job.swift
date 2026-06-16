@@ -10,7 +10,8 @@ import Foundation
 
 /// Represents a job opportunity in the system.
 /// Conforms to `Sendable` for safe passing across concurrency domains.
-public struct Job: Identifiable, Equatable, Sendable {
+/// A pure Swift object representing a job opportunity.
+public struct Job {
     public let id: String
     public let title: String
     public let company: String
