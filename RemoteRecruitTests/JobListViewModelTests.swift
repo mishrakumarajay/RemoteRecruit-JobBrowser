@@ -37,7 +37,25 @@ final class JobListViewModelTests: XCTestCase {
         
         // Assert
         let expectedViewModel = JobItemViewModel(job: expectedJob)
-        XCTAssertEqual(sut.state, .success([expectedViewModel]))
+        
+        // Explicitly typing the expected state fixes compiler ambiguity
+        let expectedState: UIState<[JobItemViewModel]> = .success([expectedViewModel])
+        
+        XCTAssertEqual(sut.state, expectedState)
+    }
+    
+    func test_loadJobs_withError_updatesStateToFailure() async {
+        // Arrange
+        mockUseCase.shouldThrowError = true
+        
+        // Act
+        await sut.loadJobs()
+        
+        // Assert
+        // Explicitly typing the expected state ensures the compiler knows 'T' is [JobItemViewModel]
+        let expectedState: UIState<[JobItemViewModel]> = .failure("Mock Server Error")
+        
+        XCTAssertEqual(sut.state, expectedState)
     }
     
     func test_loadJobs_withEmptyData_updatesStateToEmpty() async {
@@ -51,14 +69,4 @@ final class JobListViewModelTests: XCTestCase {
         XCTAssertEqual(sut.state, .empty)
     }
     
-    func test_loadJobs_withError_updatesStateToFailure() async {
-        // Arrange
-        mockUseCase.shouldThrowError = true
-        
-        // Act
-        await sut.loadJobs()
-        
-        // Assert
-        XCTAssertEqual(sut.state, .failure("Mock Server Error"))
-    }
 }

@@ -8,14 +8,23 @@
 import Foundation
 @testable import RemoteRecruit
 
-// A mock that allows us to control exactly what data is returned during tests
+// A clean error type to prevent NSError from mangling our string
+enum MockError: LocalizedError {
+    case forcedError
+    
+    var errorDescription: String? {
+        return "Mock Server Error"
+    }
+}
+
+// The updated mock use case
 struct MockSearchJobsUseCase: SearchJobsUseCaseProtocol {
     var stubbedJobs: [Job] = []
     var shouldThrowError = false
     
     func execute(query: String) async throws -> [Job] {
         if shouldThrowError {
-            throw NSError(domain: "TestError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Mock Server Error"])
+            throw MockError.forcedError
         }
         return stubbedJobs
     }
