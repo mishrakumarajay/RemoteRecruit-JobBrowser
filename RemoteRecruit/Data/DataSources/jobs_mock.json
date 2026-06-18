@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "title": "Senior iOS Engineer",
+    "company": "Salaria Sales Solutions",
+    "location": "Remote, US",
+    "salaryRange": "$140,000 - $180,000",
+    "description": "Lead the development of our core iOS applications. Strong experience in Swift, SwiftUI, and Clean Architecture is required.",
+    "companyInfo": "Salaria is a leading provider of remote sales intelligence software, scaling rapidly globally."
+  },
+  {
+    "id": "2",
+    "title": "Staff iOS Architect",
+    "company": "TechNova",
+    "location": "San Francisco, CA (Hybrid)",
+    "salaryRange": "$180,000 - $220,000",
+    "description": "Drive the technical vision for our mobile platforms. You will mentor senior engineers and design highly scalable systems.",
+    "companyInfo": "TechNova builds enterprise-grade communication tools used by Fortune 500 companies."
+  },
+  {
+    "id": "3",
+    "title": "Mobile Engineer (React Native / iOS)",
+    "company": "HealthSync",
+    "location": "Remote, EMEA",
+    "salaryRange": "$110,000 - $140,000",
+    "description": "Help us bridge the gap between our native iOS components and cross-platform architecture.",
+    "companyInfo": "A disruptive startup focusing on accessible telehealth solutions."
+  }
+]
