@@ -8,7 +8,6 @@
 import Foundation
 @testable import RemoteRecruit
 
-// A clean error type to prevent NSError from mangling our string
 enum MockError: LocalizedError {
     case forcedError
     
@@ -17,8 +16,8 @@ enum MockError: LocalizedError {
     }
 }
 
-// The updated mock use case
-struct MockSearchJobsUseCase: SearchJobsUseCaseProtocol {
+// 🛑 Change 'struct' to 'final class' here:
+final class MockSearchJobsUseCase: SearchJobsUseCaseProtocol {
     var stubbedJobs: [Job] = []
     var shouldThrowError = false
     
